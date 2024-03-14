@@ -15,7 +15,7 @@ class HomePage extends StatelessWidget {
             "TEK NEWS",
             style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold),
           )),
-      floatingActionButton: MyBottomNav(),
+      // floatingActionButton: MyBottomNav(),
 
       body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
