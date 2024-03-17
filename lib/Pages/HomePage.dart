@@ -114,7 +114,6 @@
 //   }
 // }
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:news_app/Controller/NewsController.dart';
@@ -145,13 +144,13 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Trending News",
-                  style: Theme.of(context).textTheme.headlineMedium,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+                // Text(
+                //   "Trending News",
+                //   style: Theme.of(context).textTheme.headlineMedium,
+                // ),
+                // SizedBox(
+                //   height: 20,
+                // ),
                 Obx(() {
                   if (newsController.trendingNewsList.isEmpty) {
                     return CircularProgressIndicator();
@@ -182,11 +181,11 @@ class HomePage extends StatelessWidget {
                   }
                 }),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 Text(
                   "News for you",
-                  style: Theme.of(context).textTheme.headlineMedium,
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
                 ),
                 SizedBox(
                   height: 10,
@@ -202,11 +201,17 @@ class HomePage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var news = newsController.news4you[index];
                         return NewsForYou(
+                          ontapp: () {
+                            Get.to(NewsDetailPage(
+                              newsD: news,
+                            ));
+                          },
                           imageUrl: news.urlToImage ??
                               "https://duet-cdn.vox-cdn.com/thumbor/0x0:1100x733/750x500/filters:focal(550x367:551x368):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/25333573/PR_Header_EN_1_1440x733.jpg",
                           title: news.title ?? "BLANK",
                           author: news.author ?? "Gourav Dhiman",
                           time: news.publishedAt ?? "2020-01-01",
+                          tag: "TEK NEWS",
                         );
                       },
                     );

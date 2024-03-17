@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class Hotnews extends StatelessWidget {
@@ -84,19 +86,24 @@ class Hotnews extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 18,
-                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    backgroundImage: NetworkImage(
+                        "https://waveplusweb.com/myweb/avatar.png"),
                   ),
                   SizedBox(
                     width: 10,
                   ),
                   Text(
-                    "$author",
+                    "${author.substring(0, min(15, author.length))}",
                     style: Theme.of(context).textTheme.titleMedium,
                   )
+                  // Text(
+                  //   "$author",
+                  //   style: Theme.of(context).textTheme.titleMedium,
+                  // )
                 ],
               ),
               SizedBox(
-                height: 10,
+                height: 5,
               ),
             ],
           ),

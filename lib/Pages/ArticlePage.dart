@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
+import 'package:news_app/Controller/NewsController.dart';
+import 'package:news_app/Pages/NewsDetail.dart';
 import 'package:news_app/Pages/Widgets/NewsForYou.dart';
 
 class ArticlePage extends StatelessWidget {
@@ -6,6 +11,8 @@ class ArticlePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NewsController newsController = Get.put(NewsController());
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Article"),
@@ -33,41 +40,33 @@ class ArticlePage extends StatelessWidget {
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
-                  NewsForYou(
-                      imageUrl:
-                          "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/750x500/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23986648/acastro_STK086_03.jpg",
-                      title:
-                          "Tesla’s going back to court over Autopilot’s role in a deadly 2018 crash",
-                      time: "12-Mar-2024",
-                      author: "Gourav Dhiman"),
-                  NewsForYou(
-                      imageUrl:
-                          "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/750x500/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23985721/acastro_STK062_01.jpg",
-                      title:
-                          "Discord opens up to games and apps embedded in its chat app",
-                      time: "Mar 12, 2024,",
-                      author: "Gourav Dhiman"),
-                  NewsForYou(
-                      imageUrl:
-                          "https://duet-cdn.vox-cdn.com/thumbor/0x0:3000x2000/750x500/filters:focal(1500x1000:1501x1001):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23925967/acastro_STK045_02.jpg",
-                      title:
-                          "Apple to allow iOS app downloads direct from websites in the EU",
-                      time: "Mar 12, 2024,",
-                      author: "Gourav Dhiman"),
-                  NewsForYou(
-                      imageUrl:
-                          "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/750x500/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23985721/acastro_STK062_01.jpg",
-                      title:
-                          "Discord opens up to games and apps embedded in its chat app",
-                      time: "Mar 12, 2024,",
-                      author: "Gourav Dhiman"),
-                  NewsForYou(
-                      imageUrl:
-                          "https://duet-cdn.vox-cdn.com/thumbor/0x0:3000x2000/750x500/filters:focal(1500x1000:1501x1001):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23925967/acastro_STK045_02.jpg",
-                      title:
-                          "Apple to allow iOS app downloads direct from websites in the EU",
-                      time: "Mar 12, 2024,",
-                      author: "Gourav Dhiman")
+                  Obx(() {
+                    if (newsController.news4you_sub.isEmpty) {
+                      return CircularProgressIndicator();
+                    } else {
+                      return ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: newsController.news4you_sub.length,
+                        itemBuilder: (context, index) {
+                          var news = newsController.news4you_sub[index];
+                          return NewsForYou(
+                            ontapp: () {
+                              Get.to(NewsDetailPage(
+                                newsD: news,
+                              ));
+                            },
+                            imageUrl: news.urlToImage ??
+                                "https://duet-cdn.vox-cdn.com/thumbor/0x0:1100x733/750x500/filters:focal(550x367:551x368):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/25333573/PR_Header_EN_1_1440x733.jpg",
+                            title: news.title ?? "BLANK",
+                            author: news.author ?? "Gourav Dhiman",
+                            time: news.publishedAt ?? "2020-01-01",
+                            tag: "TEK NEWS",
+                          );
+                        },
+                      );
+                    }
+                  }),
                 ],
               ),
             ),

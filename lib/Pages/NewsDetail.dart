@@ -4,7 +4,10 @@ import 'package:news_app/Model/NewsModel.dart';
 
 class NewsDetailPage extends StatelessWidget {
   final NewsModel newsD;
-  const NewsDetailPage({super.key, required this.newsD});
+  const NewsDetailPage({
+    super.key,
+    required this.newsD,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +80,9 @@ class NewsDetailPage extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 15,
-                      backgroundColor: Colors.purple,
+                      backgroundImage: NetworkImage(
+                          "https://waveplusweb.com/myweb/avatar.png"),
+                      // backgroundColor: Colors.purple,
                       child: Text(
                         "",
                         style: const TextStyle(
@@ -88,8 +93,7 @@ class NewsDetailPage extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      newsD.author!,
-                      // "Gourav Dhiman",
+                      newsD.author ?? "Gourav Dhiman",
                       style: TextStyle(fontSize: 18, color: Colors.black),
                     ),
                   ],
