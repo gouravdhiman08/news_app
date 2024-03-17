@@ -12,45 +12,94 @@ class MyBottomNav extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Container(
-          width: 250,
-          height: 60,
-          decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primaryContainer,
-              borderRadius: BorderRadius.circular(50)),
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: () {
-                    controller.index.value = 0;
-                  },
-                  child: Icon(
-                    Icons.home,
-                    size: 30,
-                  ),
+        Padding(
+          padding: const EdgeInsets.all(10),
+          child: Container(
+            width: 180,
+            height: 60,
+            decoration: BoxDecoration(
+                color: Colors.black,
+                // color: Theme.of(context).colorScheme.primaryContainer,
+                borderRadius: BorderRadius.circular(50)),
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Obx(
+                      () => InkWell(
+                        onTap: () {
+                          controller.index.value = 0;
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 1000),
+                          curve: Curves.bounceInOut,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: controller.index.value == 0
+                                  ? Colors.amber
+                                  : null,
+                              borderRadius: BorderRadius.circular(26)),
+                          child: Icon(
+                            Icons.home,
+                            size: 30,
+                            color: controller.index.value == 0
+                                ? Colors.black
+                                : Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Obx(
+                      () => InkWell(
+                        onTap: () {
+                          controller.index.value = 1;
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 1000),
+                          curve: Curves.bounceInOut,
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              color: controller.index.value == 1
+                                  ? Colors.amber
+                                  : null,
+                              borderRadius: BorderRadius.circular(26)),
+                          child: Icon(
+                            Icons.book,
+                            size: 30,
+                            color: controller.index.value == 1
+                                ? Colors.black
+                                : Colors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Obx(() => InkWell(
+                          onTap: () {
+                            controller.index.value = 2;
+                          },
+                          child: AnimatedContainer(
+                            duration: Duration(milliseconds: 1000),
+                            curve: Curves.bounceInOut,
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(
+                                color: controller.index.value == 2
+                                    ? Colors.amber
+                                    : null,
+                                borderRadius: BorderRadius.circular(26)),
+                            child: Icon(
+                              Icons.settings,
+                              size: 30,
+                              color: controller.index.value == 2
+                                  ? Colors.black
+                                  : Colors.white,
+                            ),
+                          ),
+                        ))
+                  ],
                 ),
-                InkWell(
-                  onTap: () {
-                    controller.index.value = 1;
-                  },
-                  child: Icon(
-                    Icons.book,
-                    size: 30,
-                  ),
-                ),
-                InkWell(
-                  onTap: () {
-                    controller.index.value = 2;
-                  },
-                  child: Icon(
-                    Icons.settings,
-                    size: 30,
-                  ),
-                )
-              ],
+              ),
             ),
           ),
         ),
