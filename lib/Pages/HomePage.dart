@@ -166,7 +166,7 @@ class HomePage extends StatelessWidget {
                           return Hotnews(
                             ontap: () {
                               Get.to(NewsDetailPage(
-                                newsD:news ,
+                                newsD: news,
                               ));
                             },
                             imageUrl: news.urlToImage ??
@@ -202,7 +202,7 @@ class HomePage extends StatelessWidget {
                       itemBuilder: (context, index) {
                         var news = newsController.news4you[index];
                         return NewsForYou(
-                          imageUrl:
+                          imageUrl: news.urlToImage ??
                               "https://duet-cdn.vox-cdn.com/thumbor/0x0:1100x733/750x500/filters:focal(550x367:551x368):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/25333573/PR_Header_EN_1_1440x733.jpg",
                           title: news.title ?? "BLANK",
                           author: news.author ?? "Gourav Dhiman",

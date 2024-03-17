@@ -5,7 +5,7 @@ import 'package:news_app/Model/NewsModel.dart';
 
 class NewsController extends GetxController {
   RxList<NewsModel> trendingNewsList = <NewsModel>[].obs;
-RxList<NewsModel> news4you = <NewsModel>[].obs;
+  RxList<NewsModel> news4you = <NewsModel>[].obs;
   @override
   void onInit() async {
     super.onInit();
@@ -35,9 +35,9 @@ RxList<NewsModel> news4you = <NewsModel>[].obs;
     }
   }
 
-Future<void> getNews4you() async {
+  Future<void> getNews4you() async {
     var baseURL =
-        "https://newsapi.org/v2/everything?q=tesla&from=2024-02-14&sortBy=publishedAt&apiKey=993793a7502b4609aa1dcadee12ea164";
+        "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=993793a7502b4609aa1dcadee12ea164";
     try {
       var response = await http.get(Uri.parse(baseURL));
       print(response);
@@ -48,6 +48,7 @@ Future<void> getNews4you() async {
         for (var news in articles) {
           news4you.add(NewsModel.fromJson(news));
         }
+        news4you.value = news4you.sublist(0, 6).obs;
       } else {
         print("Something Went Wrong");
       }
@@ -55,6 +56,4 @@ Future<void> getNews4you() async {
       print(e);
     }
   }
-
-
 }
