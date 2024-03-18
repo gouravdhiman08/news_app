@@ -64,7 +64,7 @@ class NewsForYou extends StatelessWidget {
                       ),
                       Container(
                         alignment: Alignment.bottomRight,
-                        child: Text( 
+                        child: Text(
                           "$time",
                           style: Theme.of(context).textTheme.labelLarge,
                           // textAlign: TextAlign.start,
@@ -78,8 +78,8 @@ class NewsForYou extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             radius: 18,
-                            backgroundImage: NetworkImage(
-                                "https://waveplusweb.com/myweb/avatar.png"),
+                            backgroundImage:
+                                AssetImage('assets/images/image.png'),
                           ),
                           SizedBox(
                             width: 10,

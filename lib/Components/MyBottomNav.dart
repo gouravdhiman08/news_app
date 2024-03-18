@@ -10,6 +10,7 @@ class MyBottomNav extends StatelessWidget {
     BottomNavBar controller = Get.put(BottomNavBar());
 
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(

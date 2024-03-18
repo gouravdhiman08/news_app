@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
+import 'package:news_app/Controller/NewsController.dart';
 import 'package:news_app/Model/NewsModel.dart';
 
 class NewsDetailPage extends StatelessWidget {
@@ -11,6 +13,7 @@ class NewsDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NewsController newsController = Get.put(NewsController());
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -80,8 +83,8 @@ class NewsDetailPage extends StatelessWidget {
                   children: [
                     CircleAvatar(
                       radius: 15,
-                      backgroundImage: NetworkImage(
-                          "https://waveplusweb.com/myweb/avatar.png"),
+                      backgroundImage: AssetImage('assets/images/image.png'),
+
                       // backgroundColor: Colors.purple,
                       child: Text(
                         "",
@@ -107,36 +110,36 @@ class NewsDetailPage extends StatelessWidget {
                   // height: 30,
                   child: Row(
                     children: [
-                      // Obx(
-                      //   () => newsController.isSpeeking.value
-                      //       ? IconButton(
-                      //           onPressed: () {
-                      //             newsController.stop();
-                      //           },
-                      //           icon: Icon(
-                      //             Icons.stop,
-                      //             size: 50,
-                      //           ),
-                      //         )
-                      //       : IconButton(
-                      //           onPressed: () {
-                      //             newsController.speak(
-                      //                 news.description ?? "No Description");
-                      //           },
-                      //           icon: Icon(
-                      //             Icons.play_arrow_rounded,
-                      //             size: 50,
-                      //           ),
-                      //         ),
-                      // ),
-                      // Expanded(
-                      //     child: Obx(
-                      //   () => Lottie.asset(
-                      //     'Assets/Animation/wave.json',
-                      //     height: 70,
-                      //     animate: newsController.isSpeeking.value,
-                      //   ),
-                      // ))
+                      Obx(
+                        () => newsController.isSpeaking.value
+                            ? IconButton(
+                                onPressed: () {
+                                  newsController.stop();
+                                },
+                                icon: Icon(
+                                  Icons.stop,
+                                  size: 50,
+                                ),
+                              )
+                            : IconButton(
+                                onPressed: () {
+                                  newsController.speak(
+                                      newsD.description ?? "No Description");
+                                },
+                                icon: Icon(
+                                  Icons.play_arrow_rounded,
+                                  size: 50,
+                                ),
+                              ),
+                      ),
+                      Expanded(
+                          child: Obx(
+                        () => Lottie.asset(
+                          'assets/animation/wave.json',
+                          height: 70,
+                          animate: newsController.isSpeaking.value,
+                        ),
+                      ))
                     ],
                   ),
                 ),

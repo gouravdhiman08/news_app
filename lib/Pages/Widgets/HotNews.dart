@@ -86,8 +86,7 @@ class Hotnews extends StatelessWidget {
                 children: [
                   CircleAvatar(
                     radius: 18,
-                    backgroundImage: NetworkImage(
-                        "https://waveplusweb.com/myweb/avatar.png"),
+                    backgroundImage: AssetImage('assets/images/image.png'),
                   ),
                   SizedBox(
                     width: 10,
