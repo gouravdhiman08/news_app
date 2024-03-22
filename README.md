@@ -1,16 +1,23 @@
-# news_app
 
-A new Flutter project.
+# Tek News App
 
-## Getting Started
+Dive into the world of Flutter development with our news app! Created as a learning project, this app harnesses the power of Flutter and the News API, seamlessly integrated through GetX, to deliver a streamlined news browsing experience.
 
-This project is a starting point for a Flutter application.
+Experience the simplicity and efficiency of state management with GetX as you explore the basics of Flutter development. With GetX, managing app state becomes intuitive, allowing you to focus on learning while staying informed with the latest headlines and breaking news.
 
-A few resources to get you started if this is your first Flutter project:
+## Tech Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Client:** Flutter
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+**Server:** news.org API
+
+
+## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gourav-dhiman-/)
+
+
+
+## Authors
+
+- [@Gourav_Dhiman](https://github.com/gouravdhiman08)
+
