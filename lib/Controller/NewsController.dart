@@ -44,7 +44,7 @@ class NewsController extends GetxController {
 
   Future<void> getNews4you() async {
     var baseURL =
-        "https://newsapi.org/v2/everything?q=tesla&from=2024-02-18&sortBy=publishedAt&apiKey=993793a7502b4609aa1dcadee12ea164";
+        "https://newsapi.org/v2/everything?q=apple&from=2024-03-21&to=2024-03-21&sortBy=popularity&apiKey=993793a7502b4609aa1dcadee12ea164";
     try {
       var response = await http.get(Uri.parse(baseURL));
       print(response);
@@ -66,7 +66,7 @@ class NewsController extends GetxController {
 
   Future<void> getNews4you_sub() async {
     var baseURL =
-        "https://newsapi.org/v2/everything?q=tesla&from=2024-02-17&sortBy=publishedAt&apiKey=993793a7502b4609aa1dcadee12ea164";
+        "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=993793a7502b4609aa1dcadee12ea164";
     try {
       var response = await http.get(Uri.parse(baseURL));
       print(response);
@@ -94,7 +94,11 @@ class NewsController extends GetxController {
     await flutterTts.speak(text);
     await flutterTts.setVolume(1.0);
 
+    // isSpeaking.value = false;
+
+    flutterTts.setCompletionHandler(() {
     isSpeaking.value = false;
+  });
   }
 
   void stop() async{
