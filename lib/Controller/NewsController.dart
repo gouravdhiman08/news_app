@@ -106,3 +106,4 @@ class NewsController extends GetxController {
     isSpeaking.value = false;
   }
 }
+
