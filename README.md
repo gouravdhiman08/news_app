@@ -15,8 +15,7 @@ Experience the simplicity and efficiency of state management with GetX as you ex
 ## 🔗 Links
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/gourav-dhiman-/)
 
-<a href="[https://www.example.com](https://github.com/gouravdhiman08/news_app/releases/download/1.0.0/Tek.News.apk)">[![App Download](https://toppng.com/uploads/preview/images-buttons-download-red-download-button-11562896412yilsysnxsr.png)</a>
-
+<a href="[(https://github.com/gouravdhiman08/news_app/releases/download/1.0.0/Tek.News.apk)">[![App Download](https://toppng.com/uploads/preview/images-buttons-download-red-download-button-11562896412yilsysnxsr.png)</a>
 
 ## Authors
 
