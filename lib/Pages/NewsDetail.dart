@@ -25,6 +25,7 @@ class NewsDetailPage extends StatelessWidget {
                   children: [
                     InkWell(
                       onTap: () {
+                        Get.find<NewsController>().stop();
                         Get.back();
                       },
                       child: Container(
@@ -50,8 +51,8 @@ class NewsDetailPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(20),
                           child: Image.network(
-                            newsD.urlToImage!,
-                            // "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/750x500/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23262657/VRG_Illo_STK001_B_Sala_Hacker.jpg",
+                            newsD.urlToImage??
+                            "https://duet-cdn.vox-cdn.com/thumbor/0x0:2040x1360/750x500/filters:focal(1020x680:1021x681):format(webp)/cdn.vox-cdn.com/uploads/chorus_asset/file/23262657/VRG_Illo_STK001_B_Sala_Hacker.jpg",
                             fit: BoxFit.cover,
                           ),
                         ),

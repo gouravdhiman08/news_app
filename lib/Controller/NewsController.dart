@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:ffi';
+import 'package:flutter/material.dart';
 import 'package:flutter_tts/flutter_tts.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -12,12 +13,27 @@ class NewsController extends GetxController {
   RxBool isSpeaking = false.obs;
   FlutterTts flutterTts = FlutterTts();
 
+
   @override
   void onInit() async {
     super.onInit();
     getTrendingNews();
     getNews4you();
     await getNews4you_sub(); // Call getNews4you_sub method
+    WidgetsBinding.instance!.addObserver(AppLifecycleListener());
+
+  }
+
+
+ @override
+  void dispose() {
+    WidgetsBinding.instance!.removeObserver(AppLifecycleListener());
+    super.dispose();
+  }
+
+ @override
+  void didPopRoute() {
+    stop(); // Stop audio when back button is pressed
   }
 
   Future<void> getTrendingNews() async {
@@ -106,4 +122,3 @@ class NewsController extends GetxController {
     isSpeaking.value = false;
   }
 }
-
